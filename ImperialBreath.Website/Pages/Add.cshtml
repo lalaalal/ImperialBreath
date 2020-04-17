@@ -1,0 +1,57 @@
+﻿@page
+@model AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+    <div id="add-wrapper">
+        <div id="add-task" class="card">
+            <article class="card-body">
+                <h4 class="card-title text-center mb-4 mt-1">Add Task</h4>
+                <hr>
+                <a href="/subjects" target="_blank">View Subjects</a>
+                <form action="/tasks/add" method="get">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="subjectId" class="form-control" placeholder="subjectId" type="number" required>
+                        </div> <!-- input-group.// -->
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="summary" class="form-control" placeholder="summary" type="text" required>
+                        </div> <!-- input-group.// -->
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="content" class="form-control" placeholder="content" type="text">
+                        </div> <!-- input-group.// -->
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="deadLine" class="form-control" placeholder="deadLine (YYYY-MM-DD)" type="datetime" required>
+                        </div> <!-- input-group.// -->
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Add  </button>
+                    </div> <!-- form-group// -->
+                </form>
+            </article>
+        </div> <!-- card.// -->
+
+        <div id="add-subject" class="card">
+            <article class="card-body">
+                <h4 class="card-title text-center mb-4 mt-1">Add Subject</h4>
+                <hr>
+                <form action="/subjects/add" method="get">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input name="name" class="form-control" placeholder="name" type="text" required>
+                        </div> <!-- input-group.// -->
+                    </div> <!-- form-group// -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Add  </button>
+                    </div> <!-- form-group// -->
+                </form>
+            </article>
+        </div> <!-- card.// -->
+    </div>
