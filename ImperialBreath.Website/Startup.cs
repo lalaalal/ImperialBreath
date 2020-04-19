@@ -34,7 +34,7 @@ namespace ImperialBreath.Website
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(600);
+                options.IdleTimeout = TimeSpan.FromSeconds(1800);
                 options.Cookie.IsEssential = true;
             });
         }

@@ -7,6 +7,11 @@
 
 <div id="home-wrapper">
     <div id="tasks" class="container">
+        <select id="select" class="custom-select mb-2" onchange="changeShow()">
+            <option value="all">모두 보기</option>
+            <option value="done">완료</option>
+            <option value="undone" selected="selected">미완</option>
+        </select>
         @{ int index = 0; }
         @foreach (var subject in Model.Subjects)
         {
@@ -59,3 +64,7 @@
     </div>
 
 </div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/tasks.js"></script>
+}

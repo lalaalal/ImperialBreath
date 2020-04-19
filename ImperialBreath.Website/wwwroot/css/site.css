@@ -90,7 +90,7 @@ body {
     max-height: 100px;
     padding: 10px;
     visibility: visible;
-    overflow-y: scroll;
+    overflow: auto;
     color: black;
     transition: ease;
     transition-duration: 0.5s;

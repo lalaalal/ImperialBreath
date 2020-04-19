@@ -9,11 +9,15 @@
             <article class="card-body">
                 <h4 class="card-title text-center mb-4 mt-1">Add Task</h4>
                 <hr>
-                <a href="/subjects" target="_blank">View Subjects</a>
                 <form action="/tasks/add" method="get">
                     <div class="form-group">
                         <div class="input-group">
-                            <input name="subjectId" class="form-control" placeholder="subjectId" type="number" required>
+                            <select class="custom-select" name="subjectId">
+                                @foreach (var subject in Model.Subjects)
+                                {
+                                    <option value="@subject.SubjectId">@subject.Name</option>
+                                }
+                            </select>
                         </div> <!-- input-group.// -->
                     </div> <!-- form-group// -->
                     <div class="form-group">
