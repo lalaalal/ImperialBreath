@@ -7,7 +7,7 @@
 <div id="update-wrapper">
     <div id="add-task" class="card">
         <article class="card-body">
-            <h4 class="card-title text-center mb-4 mt-1">Add Task</h4>
+            <h4 class="card-title text-center mb-4 mt-1">수정</h4>
             <hr>
             <form action="/tasks/update" method="get">
                 <div class="form-group">
@@ -18,21 +18,21 @@
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <div class="input-group">
-                        <input name="summary" class="form-control" placeholder="summary" type="text" value="@Model.Task.Summary" required>
+                        <input name="summary" class="form-control" placeholder="요약" type="text" value="@Model.Task.Summary" required autocomplete="off">
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <div class="input-group">
-                        <textarea name="content" class="form-control" placeholder="content" type="text" value="@Model.Task.Content"></textarea>
+                        <textarea name="content" class="form-control" placeholder="내용" type="text" value="@Model.Task.Content" autocomplete="off"></textarea>
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <div class="input-group">
-                        <input name="deadLine" class="form-control" placeholder="deadLine (YYYY-MM-DD)" type="datetime" value="@Model.Task.Deadline" required>
+                        <input name="deadLine" class="form-control" placeholder="검사 (YYYY-MM-DD)" type="datetime" value="@Model.Task.Deadline" required autocomplete="off">
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Update  </button>
+                    <button type="submit" class="btn btn-primary btn-block"> 수정  </button>
                 </div> <!-- form-group// -->
             </form>
         </article>

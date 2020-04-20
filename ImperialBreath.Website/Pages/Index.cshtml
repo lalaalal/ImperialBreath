@@ -1,8 +1,8 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
-    ViewData["UserId"] = Model.UserId + " - Logout";
+    ViewData["Title"] = "BONTIN";
+    ViewData["UserId"] = Model.UserId + " - 로그아웃";
 }
 
 <div id="home-wrapper">
@@ -15,7 +15,7 @@
         @{ int index = 0; }
         @foreach (var subject in Model.Subjects)
         {
-            List<Models.Task> taskGroup = Model.Tasks.ToList().FindAll(task => task.SubjectId == subject.SubjectId && task.Deadline >= DateTime.Today);
+            List<Models.Task> taskGroup = Model.Tasks.ToList().FindAll(task => task.SubjectId == subject.SubjectId && task.Deadline.AddDays(7) >= DateTime.Today);
             @if (taskGroup.Count == 0)
                 continue;
                 <div class="container p-0">
@@ -35,7 +35,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-text">@task.Content</div>
-                                <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일까지</div>
+                                <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일 검사</div>
                             </div>
                         </div>
                     }
@@ -53,13 +53,7 @@
             <div class="card-title m-0">@DateTime.Today.DayOfWeek </div>
         </div>
         <div class="card-body">
-            @{
-                List<Models.Task> noticeTaskGroup = Model.Tasks.ToList().FindAll(task => task.WrittenDate == DateTime.Today);
-                @foreach (var task in noticeTaskGroup)
-                {
-                    <div class="card-text">@task.Summary</div>
-                }
-            }
+
         </div>
     </div>
 
