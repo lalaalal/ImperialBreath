@@ -44,6 +44,25 @@ namespace ImperialBreath.Website.Controllers
             return Ok();   
         }
 
+        [Route("update")]
+        [HttpGet]
+        public ActionResult Update(
+            [FromQuery] int taskId,
+            [FromQuery] string summary,
+            [FromQuery] string content,
+            [FromQuery] string deadline)
+        {
+            try
+            {
+                jsonFileService.UpdateTask(taskId, summary, content, DateTime.Parse(deadline));
+            }
+            catch (Exception e)
+            {
+                return RedirectToPage("/Result", new { comment = "Failed - " + e.Message });
+            }
+            return Ok();
+        }
+
         [Route("remove")]
         [HttpGet]
         public ActionResult Remove(
