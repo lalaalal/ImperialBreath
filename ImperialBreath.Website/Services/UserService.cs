@@ -33,8 +33,8 @@ namespace ImperialBreath.Website.Services
 
         public void AddUser(string id, string pw)
         {
-            if (users.Where(user => user.Id == id).Count() != 0)
-                throw new Exception("Id Exists");
+            if (users.FindAll(user => user.Id == id).Count() != 0)
+                throw new UserException("아이디가 존재합니다.");
 
             string salt = Guid.NewGuid().ToString();
             User newUser = new User()
@@ -69,6 +69,14 @@ namespace ImperialBreath.Website.Services
                 user.DoneTaskId = user.DoneTaskId.Append(taskId).ToArray();
 
             jsonFileService.SaveUsers(users);
+        }
+    }
+
+    public class UserException : Exception
+    {
+        public UserException(string message) : base(message)
+        {
+            
         }
     }
 }

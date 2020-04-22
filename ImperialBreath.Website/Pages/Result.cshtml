@@ -4,6 +4,6 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="alert alert-primary">
+<div class="alert @(Model.Status ? "alert-primary" : "alert-danger")">
     @Model.Comment
 </div>
