@@ -12,38 +12,35 @@
             <option value="done">완료</option>
             <option value="undone" selected="selected">미완</option>
         </select>
+        <div class="alert alert-info mb-2 subject-name" id="nothing-here">없음</div>
         @{ int index = 0; }
         @foreach (var subject in Model.Subjects)
         {
             List<Models.Task> taskGroup = Model.Tasks.ToList().FindAll(task => task.SubjectId == subject.SubjectId && task.Deadline.AddDays(7) >= DateTime.Today);
             @if (taskGroup.Count == 0)
                 continue;
-                <div class="container p-0">
-                    <div class="alert alert-info mb-2 subject-name">@subject.Name</div>
-                    @foreach (var task in taskGroup)
-                    {
-                        string headerClass = "card-header";
-                        if (task.Deadline <= DateTime.Today.AddDays(1))
-                            headerClass += " urgent";
-                        <div class="card">
-                            <div class="@headerClass">
-                                <div class="card-title m-0">@task.Summary</div>
-                                <div class="custom-control custom-checkbox">
-                                    <input id="task-@task.TaskId" class="custom-control-input" type="checkbox" name="name" value="" onclick="toggleTaskDone(@(index++), @task.TaskId)" @(Model.GetDoneTaskId().Contains(task.TaskId) ? "checked" : "") />
-                                    <label class="custom-control-label" for="task-@task.TaskId"></label>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text">@task.Content</div>
-                                <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일 검사</div>
+            <div class="container p-0">
+                <div class="alert alert-info mb-2 subject-name">@subject.Name</div>
+                @foreach (var task in taskGroup)
+                {
+                    string headerClass = "card-header";
+                    if (task.Deadline <= DateTime.Today.AddDays(1))
+                        headerClass += " urgent";
+                    <div class="card">
+                        <div class="@headerClass">
+                            <div class="card-title m-0">@task.Summary</div>
+                            <div class="custom-control custom-checkbox">
+                                <input id="task-@task.TaskId" class="custom-control-input" type="checkbox" name="name" value="" onclick="toggleTaskDone(@(index++), @task.TaskId)" @(Model.GetDoneTaskId().Contains(task.TaskId) ? "checked" : "") />
+                                <label class="custom-control-label" for="task-@task.TaskId"></label>
                             </div>
                         </div>
-                    }
-                </div>
-        }
-        @if (index == 0)
-        {
-            <div class="alert alert-info mb-2 subject-name">없음</div>
+                        <div class="card-body">
+                            <div class="card-text">@task.Content</div>
+                            <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일 검사</div>
+                        </div>
+                    </div>
+                }
+            </div>
         }
 
     </div>

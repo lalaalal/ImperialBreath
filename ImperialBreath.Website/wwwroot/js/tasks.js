@@ -15,17 +15,17 @@
 function changeShow() {
     var select = $('#select')[0];
     $('#tasks .container').show();
+    $('#nothing-here').hide();
     if (select.value == "all") {
         $('#tasks .card').show();
     } else if (select.value == "done") {
         $('#tasks .card').hide();
         $('#tasks .card.checked').show();
-        hideTaskContainer();
     } else if (select.value == "undone") {
         $('#tasks .card').show();
         $('#tasks .card.checked').hide();
-        hideTaskContainer();
     }
+    hideTaskContainer();
 }
 
 function isTaskContainerEmpty(index) {
@@ -38,10 +38,15 @@ function isTaskContainerEmpty(index) {
 }
 
 function hideTaskContainer() {
+    var emptyContainerCount = 0;
     for (var i = 0; i < $('#tasks .container').length; i++) {
-        if (isTaskContainerEmpty(i))
+        if (isTaskContainerEmpty(i)) {
             $('#tasks .container')[i].style.display = "none";
+            emptyContainerCount++;
+        }
     }
+    if ($('#tasks .container').length == emptyContainerCount)
+        $('#nothing-here').show();
 }
 
 for (var index = 0; index < $('#tasks .custom-control-input').length; index++) {
@@ -52,4 +57,5 @@ for (var index = 0; index < $('#tasks .custom-control-input').length; index++) {
     }
 }
 
-changeShow($('#select')[0]);
+$('#nothing-here').hide();
+changeShow();
