@@ -101,7 +101,7 @@ body {
     transition-delay: 0s;
 }
     #tasks .card-body.collapsable {
-        max-height: 1.7rem;
+        max-height: 1.5rem;
         padding: 0 10px;
         visibility: collapse;
         overflow: hidden;
@@ -117,7 +117,7 @@ body {
         position: absolute;
         visibility: visible;
         color: gray;
-        content: "Hover to view Content";
+        content: "자세히 보기";
         transition: ease;
         transition-duration: 0.2s;
         transition-delay: 0.4s;
@@ -198,10 +198,6 @@ body {
 
     #notice {
         margin-bottom: 1.5rem;
-    }
-
-    #tasks .card-body::before {
-        content: "Tap to view content";
     }
 }
 
