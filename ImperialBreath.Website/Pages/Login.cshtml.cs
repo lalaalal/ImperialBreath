@@ -22,7 +22,7 @@ namespace ImperialBreath.Website.Pages
         public void OnGet()
         {
             if (HttpContext.Session.GetString(UserService.SESSION_USER_ID) != null)
-                Response.Redirect("");
+                Response.Redirect("/");
         }
     }
 }

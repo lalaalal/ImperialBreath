@@ -35,7 +35,21 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="card-text">@task.Content</div>
+                            <div class="card-text">
+                                @{
+                                    string content = task.Content ?? "";
+                                    string[] parts = content.Split("\r\n");
+                                    for (int i = 0; i < parts.Length; i++)
+                                    {
+                                        @parts[i]
+                                        if (i != parts.Length - 1)
+                                        {
+                                            <br />
+                                        }
+                                    }
+                                }
+
+                            </div>
                             <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일 검사</div>
                         </div>
                     </div>

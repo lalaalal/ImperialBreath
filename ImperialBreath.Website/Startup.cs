@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace ImperialBreath.Website
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(1800);
+                options.IdleTimeout = TimeSpan.FromSeconds(86400);
                 options.Cookie.IsEssential = true;
             });
         }
