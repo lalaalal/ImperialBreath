@@ -59,3 +59,27 @@ for (var index = 0; index < $('#tasks .custom-control-input').length; index++) {
 
 $('#nothing-here').hide();
 changeShow();
+
+var today = new Date();
+var year = today.getFullYear();
+var month = today.getMonth() + 1;
+var date = today.getDate();
+
+var url = "https://schoolmenukr.ml/api/high/J100000772?year=" + year + "&month=" + month + "&date=" + date;
+$.getJSON(url, function (data) {
+    var menu = data["menu"][0]
+    var lunch = menu["lunch"];
+    var dinner = menu["dinner"];
+
+    $("#lunch-menu > .card-body")[0].innerHTML = "";
+    $("#dinner-menu > .card-body")[0].innerHTML = "";
+    for (var i = 0; i < lunch.length; i++)
+        $("#lunch-menu > .card-body")[0].innerHTML += lunch[i] + "<br />";
+    if (lunch.length == 0)
+        $("#lunch-menu > .card-body")[0].innerHTML = "없어요...";
+
+    for (var i = 0; i < dinner.length; i++)
+        $("#dinner-menu > .card-body")[0].innerHTML += dinner[i];
+    if (dinner.length == 0)
+        $("#dinner-menu > .card-body")[0].innerHTML = "없어요...";
+})

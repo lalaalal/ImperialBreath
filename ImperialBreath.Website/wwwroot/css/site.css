@@ -161,11 +161,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-#tasks .card:last-child {
-    margin: 0;
-    margin-bottom: 1rem;
-}
-
 .subject-name {
     padding: 0.2rem 1rem;
 }
@@ -179,16 +174,32 @@ body {
     text-decoration: line-through;
 }
 
+#lunch-menu {
+    grid-area: lunch-menu;
+    margin-bottom: 1rem;
+}
+
+#dinner-menu {
+    grid-area: dinner-menu;
+    margin-bottom: 1rem;
+}
+
 #home-wrapper {
     display: grid;
     grid-template-areas: 
-        'tasks notice';
+        'tasks notice'
+        'tasks lunch-menu'
+        'tasks dinner-menu';
     grid-template-columns: 1fr 1.2fr;    
+}
+
+#home-wrapper > .container {
+    margin-bottom: 1rem;
 }
 
 @media (max-width: 991px) {
     #home-wrapper {
-        grid-template-areas: 'notice' 'tasks';
+        grid-template-areas: 'notice' 'lunch-menu' 'dinner-menu' 'tasks';
         grid-template-columns: 1fr;
     }
 
