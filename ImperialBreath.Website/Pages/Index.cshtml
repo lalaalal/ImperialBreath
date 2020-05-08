@@ -5,6 +5,8 @@
     ViewData["UserId"] = Model.UserId + " - 로그아웃";
 }
 
+<div id="view-menu" class="alert alert-info p-1 pl-3"><a href="#lunch-menu">점심 보기</a></div>
+
 <div id="home-wrapper">
     <div id="tasks" class="container">
         <select id="select" class="custom-select mb-2" onchange="changeShow()">
@@ -15,47 +17,47 @@
         <div class="alert alert-info mb-2 subject-name" id="nothing-here">없음</div>
         @{ int index = 0; }
         @foreach (var subject in Model.Subjects)
-        {
-            List<Models.Task> taskGroup = Model.Tasks.ToList().FindAll(task => task.SubjectId == subject.SubjectId && task.Deadline.AddDays(7) >= DateTime.Today);
-            @if (taskGroup.Count == 0)
-                continue;
-            <div class="container p-0">
-                <div class="alert alert-info mb-2 subject-name">@subject.Name</div>
-                @foreach (var task in taskGroup)
-                {
-                    string headerClass = "card-header";
-                    if (task.Deadline <= DateTime.Today.AddDays(1))
-                        headerClass += " urgent";
-                    <div class="card">
-                        <div class="@headerClass">
-                            <div class="card-title m-0">@task.Summary</div>
-                            <div class="custom-control custom-checkbox">
-                                <input id="task-@task.TaskId" class="custom-control-input" type="checkbox" name="name" value="" onclick="toggleTaskDone(@(index++), @task.TaskId)" @(Model.GetDoneTaskId().Contains(task.TaskId) ? "checked" : "") />
-                                <label class="custom-control-label" for="task-@task.TaskId"></label>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-text">
-                                @{
-                                    string content = task.Content ?? "";
-                                    string[] parts = content.Split("\r\n");
-                                    for (int i = 0; i < parts.Length; i++)
-                                    {
-                                        @parts[i]
-                                        if (i != parts.Length - 1)
-                                        {
-                                            <br />
-                                        }
-                                    }
-                                }
-
-                            </div>
-                            <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일 검사</div>
-                        </div>
+    {
+        List<Models.Task> taskGroup = Model.Tasks.ToList().FindAll(task => task.SubjectId == subject.SubjectId && task.Deadline.AddDays(7) >= DateTime.Today);
+        @if (taskGroup.Count == 0)
+            continue;
+        <div class="container p-0">
+            <div class="alert alert-info mb-2 subject-name">@subject.Name</div>
+            @foreach (var task in taskGroup)
+            {
+                string headerClass = "card-header";
+                if (task.Deadline <= DateTime.Today.AddDays(1))
+                    headerClass += " urgent";
+            <div class="card">
+                <div class="@headerClass">
+                    <div class="card-title m-0">@task.Summary</div>
+                    <div class="custom-control custom-checkbox">
+                        <input id="task-@task.TaskId" class="custom-control-input" type="checkbox" name="name" value="" onclick="toggleTaskDone(@(index++), @task.TaskId)" @(Model.GetDoneTaskId().Contains(task.TaskId) ? "checked" : "") />
+                        <label class="custom-control-label" for="task-@task.TaskId"></label>
                     </div>
-                }
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        @{
+                            string content = task.Content ?? "";
+                            string[] parts = content.Split("\r\n");
+                            for (int i = 0; i < parts.Length; i++)
+                            {
+                            @parts[i]
+                                if (i != parts.Length - 1)
+                                {
+                                    <br />
+                                }
+                            }
+                        }
+
+                    </div>
+                    <div class="card-text">@(task.Deadline.Month)월 @(task.Deadline.Day)일 검사</div>
+                </div>
             </div>
-        }
+            }
+        </div>
+    }
 
     </div>
 
@@ -68,20 +70,32 @@
         </div>
     </div>
 
-    <div id="lunch-menu" class="card">
-        <div class="card-header">
-            점심 메뉴
+    <div id="school-menu" class="container">
+        <hr />
+        <div id="lunch-menu" class="card">
+            <div class="card-header alert-">
+                점심 메뉴
+            </div>
+            <div class="card-body">
+                불러오는 중...
+            </div>
         </div>
-        <div class="card-body">
-            불러오는 중...
+        <div id="dinner-menu" class="card">
+            <div class="card-header">
+                저녁 메뉴
+            </div>
+            <div class="card-body">
+                불러오는 중...
+            </div>
         </div>
+
     </div>
-    <div id="dinner-menu" class="card">
+    <div id="test-scope" class="card">
         <div class="card-header">
-            저녁 메뉴
+            시험 범위
         </div>
         <div class="card-body">
-            불러오는 중...
+
         </div>
     </div>
 </div>

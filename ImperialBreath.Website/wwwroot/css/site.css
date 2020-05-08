@@ -91,7 +91,7 @@ body {
 }
 
 #tasks .card-body {
-    max-height: 100px;
+    max-height: 7rem;
     padding: 10px;
     visibility: visible;
     overflow: auto;
@@ -124,7 +124,7 @@ body {
     }
 
 #tasks .card:hover .card-body {
-    max-height: 100px;
+    max-height: 7rem;
     overflow-y: scroll;
     padding: 10px;
     color: black;
@@ -174,42 +174,54 @@ body {
     text-decoration: line-through;
 }
 
+#school-menu {
+    grid-area: school-menu;
+    padding: 0;
+}
+
 #lunch-menu {
-    grid-area: lunch-menu;
     margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 
 #dinner-menu {
-    grid-area: dinner-menu;
+    margin-bottom: 1rem;
+}
+
+#test-scope {
+    grid-area: test-scope;
     margin-bottom: 1rem;
 }
 
 #home-wrapper {
     display: grid;
-    grid-template-areas: 
-        'tasks notice'
-        'tasks lunch-menu'
-        'tasks dinner-menu';
-    grid-template-columns: 1fr 1.2fr;    
+    grid-template-areas: 'tasks notice' 'tasks school-menu' 'tasks test-scope';
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-rows: auto auto 1fr;
 }
 
-#home-wrapper > .container {
+#tasks > .container {
     margin-bottom: 1rem;
+}
+
+#view-menu {
+    display: none;
 }
 
 @media (max-width: 991px) {
     #home-wrapper {
-        grid-template-areas: 'notice' 'lunch-menu' 'dinner-menu' 'tasks';
+        grid-template-areas: 'notice' 'tasks' 'school-menu' 'test-scope';
         grid-template-columns: 1fr;
+    }
+
+    #view-menu {
+        display: block;
     }
 
     #tasks {
         padding: 0;
     }
 
-    #notice {
-        margin-bottom: 1.5rem;
-    }
 }
 
 body, body > .container {

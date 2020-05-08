@@ -3,13 +3,15 @@
         $('#tasks .card')[index].classList.add('checked');
         $('#tasks .card-title')[index].classList.add('checked');
         $('#tasks .card-body')[index].classList.add('collapsable');
-        $.get("/users/toggle-task?taskId=" + taskId);
     } else {
         $('#tasks .card')[index].classList.remove('checked');
         $('#tasks .card-title')[index].classList.remove('checked');
         $('#tasks .card-body')[index].classList.remove('collapsable');
-        $.get("/users/toggle-task?taskId=" + taskId);
     }
+    $.get("/users/toggle-task?taskId=" + taskId).fail(function () {
+        alert("다시 로그인해 주세요");
+        window.location.replace("/Login");
+    });
 }
 
 function changeShow() {

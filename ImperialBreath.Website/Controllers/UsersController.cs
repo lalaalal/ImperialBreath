@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ImperialBreath.Website.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,9 +62,9 @@ namespace ImperialBreath.Website.Controllers
         [HttpGet]
         public ActionResult ToggleTask([FromQuery] int taskId)
         {
-            var userId = HttpContext.Session.GetString(UserService.SESSION_USER_ID);
+            string userId = HttpContext.Session.GetString(UserService.SESSION_USER_ID);
             if (userId == null)
-                return RedirectToPage("/login");
+                return StatusCode(403);
             userService.ToggleTask(userId, taskId);
             return Ok();
         }
