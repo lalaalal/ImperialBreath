@@ -30,14 +30,7 @@ namespace ImperialBreath.Website.Controllers
         public ActionResult Add(
             [FromQuery] string name)
         {
-            try
-            {
-                jsonFileService.AddSubject(name);
-            }
-            catch (Exception e)
-            {
-                return RedirectToPage("/Result", new { comment = "Failed - " + e.Message });
-            }
+            jsonFileService.AddSubject(name);
             return Ok();   
         }
 
@@ -46,14 +39,7 @@ namespace ImperialBreath.Website.Controllers
         public ActionResult Remove(
             [FromQuery] int subjectid)
         {
-            try
-            {
-                jsonFileService.RemoveSubject(subjectid);
-            }
-            catch (Exception e)
-            {
-                return RedirectToPage("/Result", new { comment = "Failed - " + e.Message });
-            }
+            jsonFileService.RemoveSubject(subjectid);
             return Ok();
         }
     }

@@ -92,6 +92,18 @@ namespace ImperialBreath.Website.Services
             SaveTasks(tasks);
         }
 
+        public void UpdateTask(int taskId, string summary, string content, DateTime deadline)
+        {
+            List<Task> tasks = GetTasks().ToList();
+
+            Task task = tasks.First(value => value.TaskId == taskId);
+            task.Summary = summary;
+            task.Content = content;
+            task.Deadline = deadline;
+
+            SaveTasks(tasks);
+        }
+
         public void AddSubject(string name)
         {
             List<Subject> subjects = GetSubjects().ToList();
@@ -132,11 +144,10 @@ namespace ImperialBreath.Website.Services
         public void SaveFile<T>(string path, List<T> list)
         {
             File.Create(path).Close();
-            using var outputStream = File.OpenWrite(path);
-            JsonSerializer.Serialize<IEnumerable<T>>(new Utf8JsonWriter(outputStream,
+            using FileStream fileStream = File.OpenWrite(path);
+            JsonSerializer.Serialize<IEnumerable<T>>(new Utf8JsonWriter(fileStream,
                 new JsonWriterOptions
                 {
-                    SkipValidation = false,
                     Indented = true
                 }), list
              );

@@ -1,13 +1,13 @@
 ﻿@page
 @model LoginModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "로그인";
 }
 
 <div id="login-wrapper">
     <div id="login-card" class="card">
         <article class="card-body">
-            <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+            <h4 class="card-title text-center mb-4 mt-1">로그인</h4>
             <hr>
             <form action="/users/auth" method="post">
                 <div class="form-group">
@@ -15,7 +15,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="id" class="form-control" placeholder="Id" type="text" required>
+                        <input name="id" class="form-control" placeholder="아이디" type="text" required>
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
@@ -27,14 +27,14 @@
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                    <button type="submit" class="btn btn-primary btn-block"> 로그인  </button>
                 </div> <!-- form-group// -->
             </form>
         </article>
     </div> <!-- card.// -->
     <div id="signup-card" class="card">
         <article class="card-body">
-            <h4 class="card-title text-center mb-4 mt-1">Sign Up</h4>
+            <h4 class="card-title text-center mb-4 mt-1">가입</h4>
             <hr>
             <form action="/users/add" method="post">
                 <div class="form-group">
@@ -42,7 +42,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="id" class="form-control" placeholder="Id" type="text" required>
+                        <input name="id" class="form-control" placeholder="아이디" type="text" required>
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
@@ -54,7 +54,7 @@
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Sign UP  </button>
+                    <button type="submit" class="btn btn-primary btn-block"> 가입  </button>
                 </div> <!-- form-group// -->
             </form>
         </article>

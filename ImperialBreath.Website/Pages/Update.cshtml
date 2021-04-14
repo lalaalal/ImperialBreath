@@ -1,0 +1,40 @@
+﻿@page
+@model UpdateModel
+@{
+    ViewData["Title"] = "수정";
+}
+
+<div id="update-wrapper">
+    <div id="add-task" class="card">
+        <article class="card-body">
+            <h4 class="card-title text-center mb-4 mt-1">수정</h4>
+            <hr>
+            <form action="/tasks/update" method="get">
+                <div class="form-group">
+                    <input type="hidden" name="taskId" value="@Model.Task.TaskId" />
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="@Model.Subjects.First(subject => subject.SubjectId == Model.Task.SubjectId).Name" disabled />
+                    </div>
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <input name="summary" class="form-control" placeholder="요약" type="text" value="@Model.Task.Summary" required autocomplete="off">
+                    </div> <!-- input-group.// -->
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <textarea name="content" class="form-control" placeholder="내용" autocomplete="off">@Model.Task.Content</textarea>
+                    </div> <!-- input-group.// -->
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <input name="deadLine" class="form-control" placeholder="검사 (YYYY-MM-DD)" type="datetime" value="@Model.Task.Deadline" required autocomplete="off">
+                    </div> <!-- input-group.// -->
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> 수정  </button>
+                </div> <!-- form-group// -->
+            </form>
+        </article>
+    </div> <!-- card.// -->
+</div>

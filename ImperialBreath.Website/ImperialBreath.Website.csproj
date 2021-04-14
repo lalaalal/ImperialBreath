@@ -5,13 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <Compile Remove="Components\**" />
+    <Compile Remove="Model\**" />
+    <Content Remove="Components\**" />
+    <Content Remove="Model\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="Components\**" />
+    <None Remove="Model\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\data\" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

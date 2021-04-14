@@ -33,15 +33,20 @@ namespace ImperialBreath.Website.Controllers
             [FromQuery] string content,
             [FromQuery] string deadline)
         {
-            try
-            {
-                jsonFileService.AddTask(subjectId, summary, content, DateTime.Parse(deadline));
-            }
-            catch (Exception e)
-            {
-                return RedirectToPage("/Result", new { comment = "Failed - " + e.Message });
-            }
+            jsonFileService.AddTask(subjectId, summary, content, DateTime.Parse(deadline));
             return Ok();   
+        }
+
+        [Route("update")]
+        [HttpGet]
+        public ActionResult Update(
+            [FromQuery] int taskId,
+            [FromQuery] string summary,
+            [FromQuery] string content,
+            [FromQuery] string deadline)
+        {
+            jsonFileService.UpdateTask(taskId, summary, content, DateTime.Parse(deadline));
+            return Ok();
         }
 
         [Route("remove")]
@@ -49,14 +54,7 @@ namespace ImperialBreath.Website.Controllers
         public ActionResult Remove(
             [FromQuery] int taskId)
         {
-            try
-            {
-                jsonFileService.RemoveTask(taskId);
-            }
-            catch (Exception e)
-            {
-                return RedirectToPage("/Result", new { comment = "Failed - " + e.Message });
-            }
+            jsonFileService.RemoveTask(taskId);
             return Ok();
         }
     }

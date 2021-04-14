@@ -1,38 +1,42 @@
 ﻿@page
 @model AddModel
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "추가";
 }
 
     <div id="add-wrapper">
         <div id="add-task" class="card">
             <article class="card-body">
-                <h4 class="card-title text-center mb-4 mt-1">Add Task</h4>
+                <h4 class="card-title text-center mb-4 mt-1">추가</h4>
                 <hr>
-                <a href="/subjects" target="_blank">View Subjects</a>
                 <form action="/tasks/add" method="get">
                     <div class="form-group">
                         <div class="input-group">
-                            <input name="subjectId" class="form-control" placeholder="subjectId" type="number" required>
+                            <select class="custom-select" name="subjectId">
+                                @foreach (var subject in Model.Subjects)
+                                {
+                                    <option value="@subject.SubjectId">@subject.Name</option>
+                                }
+                            </select>
                         </div> <!-- input-group.// -->
                     </div> <!-- form-group// -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input name="summary" class="form-control" placeholder="summary" type="text" required>
+                            <input name="summary" class="form-control" placeholder="요약" type="text" required autocomplete="off">
                         </div> <!-- input-group.// -->
                     </div> <!-- form-group// -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input name="content" class="form-control" placeholder="content" type="text">
+                            <textarea name="content" class="form-control" placeholder="내용" type="text" autocomplete="off"></textarea>
                         </div> <!-- input-group.// -->
                     </div> <!-- form-group// -->
                     <div class="form-group">
                         <div class="input-group">
-                            <input name="deadLine" class="form-control" placeholder="deadLine (YYYY-MM-DD)" type="datetime" required>
+                            <input name="deadLine" class="form-control" placeholder="검사 (YYYY-MM-DD)" type="datetime" required autocomplete="off">
                         </div> <!-- input-group.// -->
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Add  </button>
+                        <button type="submit" class="btn btn-primary btn-block"> 추가  </button>
                     </div> <!-- form-group// -->
                 </form>
             </article>
@@ -40,16 +44,16 @@
 
         <div id="add-subject" class="card">
             <article class="card-body">
-                <h4 class="card-title text-center mb-4 mt-1">Add Subject</h4>
+                <h4 class="card-title text-center mb-4 mt-1">과목 추가</h4>
                 <hr>
                 <form action="/subjects/add" method="get">
                     <div class="form-group">
                         <div class="input-group">
-                            <input name="name" class="form-control" placeholder="name" type="text" required>
+                            <input name="name" class="form-control" placeholder="이름" type="text" required autocomplete="off">
                         </div> <!-- input-group.// -->
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Add  </button>
+                        <button type="submit" class="btn btn-primary btn-block"> 추가  </button>
                     </div> <!-- form-group// -->
                 </form>
             </article>

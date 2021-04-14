@@ -1,6 +1,10 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+* {
+    font-family: 'Godo', sans-serif;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -87,17 +91,17 @@ body {
 }
 
 #tasks .card-body {
-    max-height: 100px;
+    max-height: 7rem;
     padding: 10px;
     visibility: visible;
-    overflow-y: scroll;
+    overflow: auto;
     color: black;
     transition: ease;
     transition-duration: 0.5s;
     transition-delay: 0s;
 }
     #tasks .card-body.collapsable {
-        max-height: 1.7rem;
+        max-height: 1.5rem;
         padding: 0 10px;
         visibility: collapse;
         overflow: hidden;
@@ -113,14 +117,14 @@ body {
         position: absolute;
         visibility: visible;
         color: gray;
-        content: "Hover to view Content";
+        content: "자세히 보기";
         transition: ease;
         transition-duration: 0.2s;
         transition-delay: 0.4s;
     }
 
 #tasks .card:hover .card-body {
-    max-height: 100px;
+    max-height: 7rem;
     overflow-y: scroll;
     padding: 10px;
     color: black;
@@ -157,11 +161,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-#tasks .card:last-child {
-    margin: 0;
-    margin-bottom: 1rem;
-}
-
 .subject-name {
     padding: 0.2rem 1rem;
 }
@@ -175,30 +174,54 @@ body {
     text-decoration: line-through;
 }
 
+#school-menu {
+    grid-area: school-menu;
+    padding: 0;
+}
+
+#lunch-menu {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+#dinner-menu {
+    margin-bottom: 1rem;
+}
+
+#test-scope {
+    grid-area: test-scope;
+    margin-bottom: 1rem;
+}
+
 #home-wrapper {
     display: grid;
-    grid-template-areas: 
-        'tasks notice';
-    grid-template-columns: 1fr 1.2fr;    
+    grid-template-areas: 'tasks notice' 'tasks school-menu' 'tasks test-scope';
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-rows: auto auto 1fr;
+}
+
+#tasks > .container {
+    margin-bottom: 1rem;
+}
+
+#view-menu {
+    display: none;
 }
 
 @media (max-width: 991px) {
     #home-wrapper {
-        grid-template-areas: 'notice' 'tasks';
+        grid-template-areas: 'notice' 'tasks' 'school-menu' 'test-scope';
         grid-template-columns: 1fr;
+    }
+
+    #view-menu {
+        display: block;
     }
 
     #tasks {
         padding: 0;
     }
 
-    #notice {
-        margin-bottom: 1.5rem;
-    }
-
-    #tasks .card-body::before {
-        content: "Tap to view content";
-    }
 }
 
 body, body > .container {

@@ -1,9 +1,9 @@
 ﻿@page
 @model ResultModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "흠..";
 }
 
-<div class="alert alert-primary">
+<div class="alert @(Model.Status ? "alert-primary" : "alert-danger")">
     @Model.Comment
 </div>

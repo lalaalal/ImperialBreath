@@ -10,21 +10,24 @@ using Microsoft.Extensions.Logging;
 
 namespace ImperialBreath.Website.Pages
 {
-    public class AddModel : PageModel
+    public class UpdateModel : PageModel
     {
-        private readonly ILogger<AddModel> _logger;
+        private readonly ILogger<UpdateModel> _logger;
         private readonly JsonFileService jsonFileService;
         public List<Subject> Subjects { get; private set; }
+        public Models.Task Task;
 
-        public AddModel(ILogger<AddModel> logger, JsonFileService jsonFileService)
+        public UpdateModel(ILogger<UpdateModel> logger, JsonFileService jsonFileService)
         {
             this.jsonFileService = jsonFileService;
             _logger = logger;
+            
         }
 
-        public void OnGet()
+        public void OnGet([FromQuery] int taskId)
         {
             Subjects = jsonFileService.GetSubjects().ToList();
+            Task = jsonFileService.GetTasks().First(task => task.TaskId == taskId);
         }
     }
 }

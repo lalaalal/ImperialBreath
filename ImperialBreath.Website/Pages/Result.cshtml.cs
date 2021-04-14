@@ -11,6 +11,7 @@ namespace ImperialBreath.Website.Pages
     public class ResultModel : PageModel
     {
         private readonly ILogger<ResultModel> _logger;
+        public bool Status { get; private set; }
         public string Comment { get; private set; }
 
         public ResultModel(ILogger<ResultModel> logger)
@@ -18,8 +19,9 @@ namespace ImperialBreath.Website.Pages
             _logger = logger;
         }
 
-        public void OnGet([FromQuery] string comment)
+        public void OnGet([FromQuery] bool status, [FromQuery] string comment)
         {
+            Status = status;
             Comment = comment;
         }
     }
